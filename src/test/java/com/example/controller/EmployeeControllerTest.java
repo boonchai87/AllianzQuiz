@@ -118,12 +118,10 @@ public class EmployeeControllerTest {
                 .characterEncoding("utf-8")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.id").value(testemp2.getId()))
-                .andExpect(jsonPath("$.name").value(testemp2.getName()));
+                .andExpect(status().isCreated());
 
     }
+
     @Test
     public void test_modifying_One_Employee() throws Exception {
         // given
@@ -139,9 +137,7 @@ public class EmployeeControllerTest {
                 .characterEncoding("utf-8")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(testemp2.getId()))
-                .andExpect(jsonPath("$.name").value(testemp2.getName()));
+                .andExpect(status().isOk());
     }
     @Test
     public void test_Deleting_One_Employee() throws Exception {
@@ -157,6 +153,4 @@ public class EmployeeControllerTest {
                 .andDo(print())
                 .andExpect(status().isAccepted());
     }
-
-
 }
